@@ -32,7 +32,7 @@ export class User extends BaseEntity {
   @Column({ type: 'varchar', length: 14 }) username: string;
 
   //名字
-  @Column({ type: 'varchar', length: 8 }) nickname: string;
+  @Column({ type: 'varchar', length: 16 }) nickname: string;
 
   //头像
   @Column({default:0}) avatar:number;
