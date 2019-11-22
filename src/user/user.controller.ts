@@ -30,16 +30,41 @@ export class UserController {
     private readonly userService: UserService,
     private readonly authService: AuthService,
   ) {
+
+    for (let i =0 ; i<100 ; i++){
+      this.makeuser()
+    }
+
+
+
+  }
+
+  makeuser(){
     const datas = 'abcdefghijkmnmopqrstuvwxyz1234567890'
     const chatset = datas.split('')
 
-
-      // userDb.find().then(us=>{
-      //   us.forEach(u=>{
-      //
-      //   })
-      // })
-
+    let user = new User()
+    user.username = ''
+    //设置用户名
+    for (let i = 0; i<12; i++ ){
+      let random_index = Math.floor(Math.random()*chatset.length)
+      user.username += chatset[random_index]
+    }
+    //设置昵称
+    var pres :any = '沉默0认真0美丽0k开心0痛苦0完美0迷人0帅气0聪明0乐观0奇妙0高级0高贵0动人0无知0冷淡0得力0优秀0现实0怕人'
+    pres = pres.split('0')
+    var nons : any = '学生0猫咪0熊猫0狐狸0海滩0乌龟0兔子0骑士0法师0牛奶0饼干0热狗0果汁0汽水0面包0平民0学者0苹果'
+    nons = nons.split('0')
+    let pres_index = Math.floor(Math.random()*pres.length)
+    let nons_index = Math.floor(Math.random()*nons.length)
+    user.nickname = pres[pres_index] + '之' + nons[nons_index]
+    user.age =  10 + Math.floor(Math.random()*60)
+    user.password = '123'
+    user.birth = new Date()
+    user.city = '海南省'
+    user.sex = Math.random()>0.4
+    user.email = '9922@qq.com'
+    this.userDb.save(user)
   }
 
   @Post('get')
