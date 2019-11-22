@@ -54,7 +54,7 @@ export class User extends BaseEntity {
   @Column({ default: true }) sex: boolean;
 
   //城市
-  @Column({type:'varchar', default: '海南省' }) city:string
+  @Column() city:string
 
   //
   @Column( { default: '1999-9-10' }) freezeDate:Date;
