@@ -63,6 +63,8 @@ export class UserController {
     user.birth = new Date()
     user.city = '海南省'
     user.sex = Math.random()>0.4
+    user.lastLogin = new Date()
+    user.des = '大家好~'
     user.email = '9922@qq.com'
     this.userDb.save(user)
   }
