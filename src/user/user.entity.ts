@@ -54,10 +54,10 @@ export class User extends BaseEntity {
   @Column({ default: true }) sex: boolean;
 
   //城市
-  @Column() city:string
+  @Column({ default: '海南省' }) city:string
 
   //
-  @Column() freezeDate:Date;
+  @Column( { default: '1999-9-10' }) freezeDate:Date;
 
   //emial
   @Column({ type: 'varchar', length: 20, default: '992273994@qq.com' })
