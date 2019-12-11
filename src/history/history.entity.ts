@@ -17,27 +17,20 @@ export  class History extends  BaseEntity{
   @PrimaryGeneratedColumn() id:number;
   @CreateDateColumn() gen;
 
-  //基本信息
-
   //名字
   @Column({type:'varchar',length:255  }) msg:string
-
-
 
   @Column() fromId:number
 
   @Column() toId:number
 
-
   @ManyToMany(type => User, user => user.histories)
   belongers : User[]
 
+  @ManyToOne(type => User)
+  from:User
 
-
-
-
-
-
-
+  @ManyToOne(type => User)
+  to:User
 
 }

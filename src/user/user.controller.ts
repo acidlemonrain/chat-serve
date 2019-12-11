@@ -30,10 +30,14 @@ export class UserController {
     private readonly userService: UserService,
     private readonly authService: AuthService,
   ) {
+   userDb.find().then(users => {
+     users.forEach(user => {
+       //设置昵称
 
-    for (let i =0 ; i<100 ; i++){
-      this.makeuser()
-    }
+
+
+     })
+   })
 
 
 
@@ -51,7 +55,7 @@ export class UserController {
       user.username += chatset[random_index]
     }
     //设置昵称
-    var pres :any = '沉默0认真0美丽0k开心0痛苦0完美0迷人0帅气0聪明0乐观0奇妙0高级0高贵0动人0无知0冷淡0得力0优秀0现实0怕人'
+    var pres :any = '沉默0认真0美丽0开心0痛苦0完美0迷人0帅气0聪明0乐观0奇妙0高级0高贵0动人0无知0冷淡0得力0优秀0现实0怕人'
     pres = pres.split('0')
     var nons : any = '学生0猫咪0熊猫0狐狸0海滩0乌龟0兔子0骑士0法师0牛奶0饼干0热狗0果汁0汽水0面包0平民0学者0苹果'
     nons = nons.split('0')

@@ -14,10 +14,20 @@ export class ManagerController {
     @InjectRepository(History) private historyDb: HistoryRepository,
     @InjectRepository(User) private userDb: UserRepository,
   ) {
+      historyDb.find().then(hs=>{
+        hs.forEach(h=>{
 
+        })
+      })
   }
 
 
+
+  @Post('history')
+  async  gethistory(@Body() body)
+  {
+    return  await  this.historyDb.find({where:{fromId:body.id},relations:['to']})
+  }
 
   @Get('history')
   async history(){

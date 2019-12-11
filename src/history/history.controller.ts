@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { HistoryRepository } from './history.repository';
 import { Any, In } from 'typeorm';
 import { NotifyRepository } from '../notify/notify.repository';
+import { UserRepository } from '../user/user.repository';
 
 @Controller('history')
 export class HistoryController {
@@ -11,8 +12,12 @@ export class HistoryController {
     @InjectRepository(HistoryRepository)
     private  historyDb:HistoryRepository,
     @InjectRepository(NotifyRepository)
-    private  notifyDb:NotifyRepository
-  ){}
+    private  notifyDb:NotifyRepository,
+    @InjectRepository(UserRepository)
+    private  userDb:UserRepository,
+  ){
+
+  }
 
   //查看与好友的历史聊天记录
   @Post('/')

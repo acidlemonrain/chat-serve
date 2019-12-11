@@ -56,7 +56,6 @@ export class ChatGateway implements OnGatewayConnection,OnGatewayInit,OnGatewayD
   //聊天
   @SubscribeMessage('chat')
   async chat(client,data){
-
     this.sendTo(data.toId,'chat',data)
     this.sendTo(data.fromId,'chat',data)
     this.chatService.keepHistory(data)
@@ -75,6 +74,9 @@ export class ChatGateway implements OnGatewayConnection,OnGatewayInit,OnGatewayD
   sendToAll(eventname,data){
     this.server.emit(eventname.toString(),data)
   }
+
+
+
 
   sendTo(room,eventname,data){
     this.server.to(room).emit(eventname, data);

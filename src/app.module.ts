@@ -14,9 +14,11 @@ import { FileModule } from './file/file.module';
 import { ManagerModule } from './manager/manager.module';
 import { TipModule } from './tip/tip.module';
 
+import { AnoysChatModule } from './anoys-chat/anoys-chat.module';
+
 
 @Module({
-  imports: [UserModule,TypeOrmModule.forRoot(), ChatModule, RequestModule, HistoryModule, WeiboModule, CommentModule, NotifyModule, BoardModule, FileModule, ManagerModule, TipModule ],
+  imports: [UserModule,TypeOrmModule.forRoot(), ChatModule, RequestModule, HistoryModule, WeiboModule, CommentModule, NotifyModule, BoardModule, FileModule, ManagerModule, TipModule, AnoysChatModule ],
   controllers: [AppController],
   providers: [AppService],
 })
