@@ -13,12 +13,15 @@ import { WeiboRepository } from './weibo.repository';
 import { FileInterceptor } from '@nestjs/platform-express';
 
 import { diskStorage } from 'multer';
+import { CommentRepository } from '../comment/comment.repository';
 const uuidv1 = require('uuid/v1');
 @Controller('weibo')
 export class WeiboController {
   constructor(
     @InjectRepository(WeiboRepository)
     private weiboDb: WeiboRepository,
+    @InjectRepository(CommentRepository)
+    private commentDb: CommentRepository,
   ) {}
 
   //获取weibo
@@ -79,6 +82,11 @@ export class WeiboController {
   //删除weibo
   @Post('/remove')
  async remove(@Body() body){
+    let weibo = await  this.weiboDb.findOne(body.id,{relations:['comments']})
+    let comments = weibo.comments
+    comments.forEach( async (cmt)=>{
+     await this.commentDb.remove(cmt)
+    })
    return  await this.weiboDb.remove(body)
   }
 }
