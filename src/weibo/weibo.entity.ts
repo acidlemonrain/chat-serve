@@ -24,7 +24,7 @@ export  class Weibo extends  BaseEntity{
 
   @Column({default:0}) likes :number
 
-  @ManyToOne(type => User,user => user.weibos)
+  @ManyToOne(type => User,user => user.weibos,{onDelete:'CASCADE'})
   author:User
 
   @Column({default:''})  image:string

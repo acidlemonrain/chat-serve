@@ -25,7 +25,7 @@ export  class Comment extends  BaseEntity{
   @ManyToOne(type => User)
   author:User
 
-  @ManyToOne(type => Weibo,weibo => weibo.comments)
+  @ManyToOne(type => Weibo,weibo => weibo.comments,{onDelete:'CASCADE'})
   weibo:Weibo
 
   @Column() weiboId :number
